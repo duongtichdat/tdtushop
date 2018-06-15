@@ -42,5 +42,5 @@ namespace TdtuShop.UnitTest.RepositoryTest
             Assert.IsNotNull(result);
             Assert.AreEqual(7, result.ID);
         }
-    } 
+    }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TdtuShop.Data.Infrastructure;
 using TdtuShop.Data.Repositories;
 using TdtuShop.Model.Models;
@@ -32,13 +28,15 @@ namespace TdtuShop.Service
 
     public class PostService : IPostService
     {
-        IPostRepository _postRepository;
-        IUnitOfWork _unitOfWork;
+        private IPostRepository _postRepository;
+        private IUnitOfWork _unitOfWork;
+
         public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
         {
             this._postRepository = postRepository;
             this._unitOfWork = unitOfWork;
         }
+
         public void Add(Post post)
         {
             _postRepository.Add(post);
@@ -63,7 +61,6 @@ namespace TdtuShop.Service
         {
             //TODO: Select all post by tag
             return _postRepository.GetAllByTag(tag, page, pageSize, out totalRow);
-
         }
 
         public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)

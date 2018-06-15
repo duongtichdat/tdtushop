@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TdtuShop.Model.Abstract;
 
 namespace TdtuShop.Model.Models
@@ -21,6 +17,7 @@ namespace TdtuShop.Model.Models
 
         [Required]
         public string Alias { set; get; }
+
         public string Description { set; get; }
         public int? ParentID { set; get; }
         public int? DisplayOrder { set; get; }

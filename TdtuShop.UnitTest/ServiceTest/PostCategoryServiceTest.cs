@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TdtuShop.Data.Infrastructure;
 using TdtuShop.Data.Repositories;
 using TdtuShop.Model.Models;
@@ -67,8 +63,6 @@ namespace TdtuShop.UnitTest.ServiceTest
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.ID);
-
-
         }
     }
 }

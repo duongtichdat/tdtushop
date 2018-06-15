@@ -3,7 +3,6 @@ using System.Linq;
 using TdtuShop.Data.Infrastructure;
 using TdtuShop.Model.Models;
 
-
 namespace TdtuShop.Data.Repositories
 {
     public interface IProductCategoryRepository : IRepository<ProductCategory>
@@ -17,6 +16,7 @@ namespace TdtuShop.Data.Repositories
             : base(dbFactory)
         {
         }
+
         public IEnumerable<ProductCategory> GetByAlias(string alias)
         {
             return this.DbContext.ProductCategories.Where(x => x.Alias == alias);
