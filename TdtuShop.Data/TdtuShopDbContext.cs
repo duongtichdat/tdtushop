@@ -1,9 +1,10 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 using TdtuShop.Model.Models;
 
 namespace TdtuShop.Data
 {
-    public class TdtuShopDbContext : DbContext
+    public class TdtuShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public TdtuShopDbContext() : base("TdtuShopConnection")
         {
@@ -32,8 +33,15 @@ namespace TdtuShop.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+        public static TdtuShopDbContext Create()
+        {
+            return new TdtuShopDbContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }
