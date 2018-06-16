@@ -1,4 +1,5 @@
-﻿/// <reference path="../plugins/angular/angular.js" />
+﻿/// <reference path="tdtuShopDirective.html" />
+/// <reference path="../plugins/angular/angular.js" />
 ////Khai bao module
 //var myApp = angular.module('myModule', []);
 ////Add controller vao module
@@ -23,19 +24,24 @@
 var myApp = angular.module('myModule', []);
 
 myApp.controller("schoolController", schoolController);
-myApp.service('Validator', Validator);
 
-schoolController.$inject = ['$scope', 'Validator'];
+myApp.service('validatorService', validatorService);
 
-function schoolController($scope, Validator) {
+myApp.directive("tdtuShopDirective", tdtuShopDirective);
+
+
+
+schoolController.$inject = ['$scope', 'validatorService'];
+
+function schoolController($scope, validatorService) {
     //$scope.message = Validator.checkNumber(2);
     $scope.checkNumber = function () {
-        $scope.message = Validator.checkNumber($scope.num);
+        $scope.message = validatorService.checkNumber($scope.num);
     }
     $scope.num = 1;
 }
 
-function Validator($window) {
+function validatorService($window) {
     return {
         checkNumber: checkNumber
     }
@@ -45,5 +51,12 @@ function Validator($window) {
         }
         else
             return ('This is odd');
+    }
+}
+
+function tdtuShopDirective() {
+    return {
+        restrict: "A",
+        templateUrl: "/Scripts/spa/tdtuShopDirective.html"
     }
 }
