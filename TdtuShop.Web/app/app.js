@@ -1,6 +1,10 @@
 ﻿/// <reference path="/Assets/admin/libs/angular/angular.js" />
 (function () {
-    angular.module('tdtushop', ['tdtushop.products', 'tdtushop.common']).config(config);
+    angular.module('tdtushop',
+        ['tdtushop.products',
+         'tdtushop.product_categories',
+         'tdtushop.common'])
+        .config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
